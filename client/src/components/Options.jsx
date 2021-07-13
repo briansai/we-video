@@ -1,10 +1,11 @@
 import React from 'react';
+import Notifications from './Notifications';
 
-function Options({ children }) {
+function Options() {
   return (
     <div>
       Options
-      {children}
+      <Notifications />
     </div>
   );
 }

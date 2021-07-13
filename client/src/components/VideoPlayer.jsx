@@ -1,35 +1,59 @@
 import React, { useContext } from 'react';
-import { Typography } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { SocketContext } from '../context/SocketContext';
 import VideoPlayerOptions from './VideoPlayerOptions';
 import './VideoPlayer.scss';
 
+const useStyles = makeStyles((theme) => ({
+  video: {
+    width: '550px',
+  },
+  gridContainer: {
+    justifyContent: 'center',
+  },
+  paper: {
+    padding: '10px',
+    border: '2px solid black',
+    margin: '10px',
+  },
+}));
+
 function VideoPlayer() {
+  const classes = useStyles();
   const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } =
     useContext(SocketContext);
 
-  const handleMuteMic = (index) => {
-    stream.getVideoTracks()[index].muted = false;
-  };
-
   return (
-    <div className="video">
+    <Grid container calssName={classes.gridContainer}>
       {stream && (
-        <div className="video__container">
+        <Paper className={classes.paper}>
           <Typography variant="h5" gutterBottom>
-            {name || 'Name'}
+            Name
           </Typography>
           <video
             playsInline
             muted
             ref={myVideo}
             autoPlay
-            className="video__player"
+            className={classes.video}
           />
-          <VideoPlayerOptions stream={stream} />
-        </div>
+        </Paper>
       )}
-    </div>
+      {callAccepted && !callEnded && (
+        <Paper className={classes.paper}>
+          <Typography variant="h5" gutterBottom>
+            Name
+          </Typography>
+          <video
+            playsInline
+            ref={userVideo}
+            autoPlay
+            className={classes.video}
+          />
+        </Paper>
+      )}
+    </Grid>
   );
 }
 
