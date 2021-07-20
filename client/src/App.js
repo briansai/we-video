@@ -1,9 +1,10 @@
 import React from 'react';
 import { Typography, AppBar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import Home from './pages/Home';
 import VideoPlayer from './components/VideoPlayer';
 import Options from './components/Options';
+import Notifications from './components/Notifications';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -12,10 +13,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     height: '10vh',
     padding: '10px',
-
-    [theme.breakpoints.down('xs')]: {
-      width: '90%',
-    },
+    width: '100%',
   },
   wrapper: {
     display: 'flex',
@@ -37,7 +35,9 @@ const App = () => {
       </AppBar>
       <Home />
       <VideoPlayer />
-      <Options />
+      <Options>
+        <Notifications />
+      </Options>
     </div>
   );
 };
