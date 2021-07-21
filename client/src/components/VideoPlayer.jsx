@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   video: {
     width: '550px',
     [theme.breakpoints.down('xs')]: {
-      width: '300px',
+      width: '280px',
     },
   },
   gridContainer: {
@@ -35,7 +35,7 @@ function VideoPlayer() {
       {stream && (
         <Paper className={classes.paper}>
           <Typography variant="h5" gutterBottom>
-            Name
+            {name}
           </Typography>
           <video
             playsInline

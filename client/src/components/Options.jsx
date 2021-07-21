@@ -58,7 +58,7 @@ function Options({ children }) {
                 Account Info
               </Typography>
               <TextField
-                label="ID to Call"
+                label="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
@@ -76,10 +76,10 @@ function Options({ children }) {
             </Grid>
             <Grid item xs={12} md={6} className={classes.padding}>
               <Typography gutterBottom variant="h6">
-                Make a Call
+                Make a call
               </Typography>
               <TextField
-                label="ID to Call"
+                label="ID to call"
                 value={idToCall}
                 onChange={(e) => setIdToCall(e.target.value)}
                 fullWidth
@@ -110,8 +110,8 @@ function Options({ children }) {
             </Grid>
           </Grid>
         </form>
+        {children}
       </Paper>
-      {children}
     </Container>
   );
 }
